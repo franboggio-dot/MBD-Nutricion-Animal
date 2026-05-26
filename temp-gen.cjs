@@ -1,0 +1,1 @@
+const fs=require("fs");const p=require("path");const f=p.join(__dirname,"src/pages/PresetD.jsx");let c=fs.readFileSync(f,"utf-8");console.log(c.length);
