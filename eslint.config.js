@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'fix.js', 'fix2.cjs', 'temp_script.cjs', 'temp-gen.cjs', 'temp-writer.cjs', 'PresetD.backup.jsx', 'temp_script.py', 'temp-mod.py', '**/*.backup.*']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -23,7 +23,7 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]|^motion$' }],
     },
   },
 ])
