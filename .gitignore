@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent & local tool files
+.agent/
+UsersFranciscoDownloadsawesome-design-md/
+nul
+
