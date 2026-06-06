@@ -473,16 +473,16 @@ body {
 }
 
 /* ── Responsive Helpers ─────────────────────────── */
-.hide-mobile { display: flex; }
-.show-mobile { display: none; }
+.hide-mobile { display: flex !important; }
+.show-mobile { display: none !important; }
 
 @media (max-width: 860px) {
   .grid-2 { grid-template-columns: 1fr; gap: 3rem; }
   .grid-3 { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .section-pad { padding: 5rem 1.5rem !important; }
-  .hide-mobile { display: none; }
-  .show-mobile { display: flex; }
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: flex !important; }
 }
 
 @media (max-width: 600px) {
@@ -575,7 +575,7 @@ body {
 
 /* ── Hamburger button ─────────────────────────────── */
 .navbar-hamburger {
-  display: none;
+  display: none !important;
   align-items: center;
   justify-content: center;
   width: 44px;
@@ -597,7 +597,7 @@ body {
 }
 
 @media (max-width: 860px) {
-  .navbar-hamburger { display: flex; }
+  .navbar-hamburger { display: flex !important; }
 }
 
 /* ── Mobile menu overlay ─────────────────────────── */

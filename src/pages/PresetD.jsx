@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom';
 import {
   ArrowUpRight, HeartPulse,
   Leaf, Droplets, Flower2, Check,
-  Sparkles, FlaskConical, ArrowRight
+  Sparkles, FlaskConical, ArrowRight,
+  Menu, X
 } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -96,11 +97,7 @@ export function Navbar() {
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
         >
-          <div className="relative w-[18px] h-[18px]">
-            <span className={`absolute left-0 top-0 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : ''}`} />
-            <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-            <span className={`absolute left-0 bottom-0 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'bottom-1/2 translate-y-1/2 -rotate-45' : ''}`} />
-          </div>
+          {mobileOpen ? <X size={20} strokeWidth={2.5} /> : <Menu size={20} strokeWidth={2.5} />}
         </button>
       </nav>
 
