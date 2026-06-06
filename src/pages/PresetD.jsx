@@ -71,9 +71,9 @@ export function Navbar() {
       <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
         <div className="navbar-brand">
           <img src="/logo.png" alt="Logo MB.DÍAZ" className="navbar-logo" />
-          <div className="font-sora" style={{ fontWeight: 800, fontSize: '1.05rem', color: 'var(--fg-white)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '2px' }}>
+          <div style={{ fontWeight: 800, fontSize: 'clamp(0.8rem, 2.5vw, 1.05rem)', color: 'var(--fg-white)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '2px', whiteSpace: 'nowrap' }}>
             <span style={{ color: 'var(--color-primary)' }}>MBD</span>
-            <span className="text-white/40">.</span>
+            <span style={{ color: 'rgba(255,255,255,0.4)' }}>.</span>
             <span>Nutrición Animal</span>
           </div>
         </div>
