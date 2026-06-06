@@ -296,7 +296,7 @@ function Plans() {
       id: 'plan-basica',
       tag: 'Nutrición natural',
       name: 'Consulta Básica',
-      price: '$50',
+      price: '$50,000',
       period: '/ consulta',
       desc: 'Ideal para iniciar a tu perro o gato en una dieta 100% natural.',
       features: [
@@ -312,7 +312,7 @@ function Plans() {
       id: 'plan-integral',
       tag: 'Nutrición + Terapias completas',
       name: 'Consulta Integral',
-      price: '$90',
+      price: '$100,000',
       period: '/ consulta',
       desc: 'Abordaje multiescala para revertir patologías y potenciar longevidad.',
       features: [
@@ -330,7 +330,7 @@ function Plans() {
       id: 'plan-botanica',
       tag: 'Fitoterapia y Micoterapia',
       name: 'Sesión Botánica',
-      price: '$40',
+      price: '$40,000',
       period: '/ consulta',
       desc: '✨ Encontrá el acompañamiento natural más adecuado para tu compañero con herramientas botánicas y vibracionales.',
       features: [
@@ -442,7 +442,7 @@ function LunaturalBrand() {
           <div className="lunatural-image-wrap">
             <div className="lunatural-image-frame">
               <img
-                src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&q=80"
+                src="/images/Pipeta Natural.png"
                 alt="Línea Lunatural"
                 className="lunatural-image"
                 onError={e => { e.currentTarget.style.display = "none" }}
