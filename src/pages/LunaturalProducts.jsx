@@ -6,18 +6,18 @@ import { ArrowLeft, Sparkles, FlaskConical } from 'lucide-react';
 const products = [
   {
     id: 'pipeta', name: 'Pipeta Natural', badge: 'Antiparasitario',
-    img: '/images/Pipeta.bg.png', tagline: 'Protección natural de amplio espectro.',
-    benefits: ['Repelente natural de pulgas y garrapatas', 'Aceites esenciales de citronela y neem', 'Apto para cachorros +4 meses'],
+    img: '/images/Pipeta Natural.png', tagline: 'Protección natural de amplio espectro.',
+    benefits: ['Repelente natural de pulgas y garrapatas', 'Aceites esenciales de citronela y neem', 'Apta para cachorros mayores de 6 meses'],
   },
   {
     id: 'balsamo', name: 'Bálsamo Hidratante', badge: 'Cuidado de Piel',
-    img: '/images/Balsamo.png', tagline: 'Nutrición profunda para piel y almohadillas.',
+    img: '/images/Unguento.png', tagline: 'Nutrición profunda para piel y almohadillas.',
     benefits: ['Hidratación con manteca de karité y caléndula', 'Hidratación para trufa, almohadillas y callos', 'Sin parabenos ni fragancias sintéticas'],
   },
   {
     id: 'crema', name: 'Ungüento Cicatrizante', badge: 'Cicatrizante',
-    img: '/images/Unguento.png', tagline: 'Alivio natural para irritaciones y alergias.',
-    benefits: ['Fórmula con avena coloidal y aloe vera', 'Calma dermatitis y picaduras', 'Aplicación diaria no grasosa'],
+    img: '/images/Balsamo.png', tagline: 'Protege la herida y acelera cicatrización.',
+    benefits: ['Fórmula con aceites vegetales, aceites esenciales y cera de abejas', 'Protección, nutrición y elasticidad', 'Aplicación diaria no grasosa'],
   },
   {
     id: 'personalizado', name: 'Tu Preparado Natural', price: 'A medida', badge: 'Personalizado',

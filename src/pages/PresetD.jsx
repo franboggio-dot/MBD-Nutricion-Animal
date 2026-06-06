@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { motion } from 'framer-motion';
@@ -23,11 +23,27 @@ const smoothScroll = (e) => {
 // ── NAVBAR ────────────────────────────────────────────────────────────────────
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
+
+  const closeMenu = useCallback(() => {
+    setMenuClosing(true);
+    setTimeout(() => {
+      setMobileOpen(false);
+      setMenuClosing(false);
+    }, 300);
+  }, []);
+
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', h);
     return () => window.removeEventListener('scroll', h);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   const links = [
     { label: 'Inicio', href: '#inicio' },
@@ -36,29 +52,88 @@ export function Navbar() {
     { label: 'Lunatural', href: '#lunatural' },
   ];
 
+  const handleLinkClick = (e) => {
+    smoothScroll(e);
+    closeMenu();
+  };
+
+  const toggleMenu = useCallback(() => {
+    if (mobileOpen) {
+      closeMenu();
+    } else {
+      setMobileOpen(true);
+    }
+  }, [mobileOpen, closeMenu]);
+
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
-      <div className="navbar-brand">
-        <img src="/logo.png" alt="Logo MB.DÍAZ" className="navbar-logo" />
-        <div className="font-sora" style={{ fontWeight: 800, fontSize: '1.05rem', color: 'var(--fg-white)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '2px' }}>
-          <span style={{ color: 'var(--color-primary)' }}>MBD</span>
-          <span style={{ color: 'rgba(255,255,255,0.4)' }}>.</span>
-          <span>Nutrición Animal</span>
+    <>
+      <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+        <div className="navbar-brand">
+          <img src="/logo.png" alt="Logo MB.DÍAZ" className="navbar-logo" />
+          <div className="font-sora" style={{ fontWeight: 800, fontSize: '1.05rem', color: 'var(--fg-white)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <span style={{ color: 'var(--color-primary)' }}>MBD</span>
+            <span className="text-white/40">.</span>
+            <span>Nutrición Animal</span>
+          </div>
         </div>
-      </div>
 
-      <div className="navbar-links">
-        {links.map(l => (
-          <a key={l.href} href={l.href} onClick={smoothScroll} className="nav-link">
-            {l.label}
-          </a>
-        ))}
-      </div>
+        <div className="navbar-links hide-mobile">
+          {links.map(l => (
+            <a key={l.href} href={l.href} onClick={smoothScroll} className="nav-link">
+              {l.label}
+            </a>
+          ))}
+        </div>
 
-      <a href="https://api.whatsapp.com/send/?phone=5493517012047&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="navbar-cta nav-cta-btn">
-        Reservar consulta
-      </a>
-    </nav>
+        <a href="https://api.whatsapp.com/send/?phone=5493517012047&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="navbar-cta-btn nav-cta-btn hide-mobile">
+          Reservar consulta
+        </a>
+
+        <button
+          onClick={toggleMenu}
+          className="navbar-hamburger"
+          aria-label={mobileOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
+        >
+          <div className="relative w-[18px] h-[18px]">
+            <span className={`absolute left-0 top-0 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : ''}`} />
+            <span className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`absolute left-0 bottom-0 w-full h-[2px] bg-white rounded-full transition-all duration-300 ${mobileOpen ? 'bottom-1/2 translate-y-1/2 -rotate-45' : ''}`} />
+          </div>
+        </button>
+      </nav>
+
+      {mobileOpen && (
+        <div id="mobile-menu" className="mobile-menu-overlay" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+          <div className="mobile-menu-backdrop" onClick={closeMenu} />
+          <div className={`mobile-menu-panel ${menuClosing ? 'closing' : 'open'}`}>
+            <div className="flex flex-col gap-1">
+              {links.map(l => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={handleLinkClick}
+                  className="mobile-menu-link"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </div>
+            <div className="mobile-menu-divider" />
+            <a
+              href="https://api.whatsapp.com/send/?phone=5493517012047&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="nav-cta-btn mobile-menu-cta"
+            >
+              Reservar consulta
+            </a>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -390,15 +465,15 @@ export function LunaturalDetail() {
       id: 'pipeta',
       name: 'Pipeta Natural',
       badge: 'Antiparasitario',
-      img: '/images/Pipeta.bg.png',
+      img: '/images/Pipeta Natural.png',
       tagline: 'Protección natural de amplio espectro.',
-      benefits: ['Repelente natural de pulgas y garrapatas', 'Aceites esenciales de citronela y neem', 'Apto para cachorros +4 meses'],
+      benefits: ['Repelente natural de pulgas y garrapatas', 'Aceites esenciales de citronela y neem', 'Apta para cachorros mayores de 6 meses'],
     },
     {
       id: 'balsamo',
       name: 'Bálsamo Hidratante',
       badge: 'Cuidado de Piel',
-      img: '/images/Balsamo.png',
+      img: '/images/Unguento.png',
       tagline: 'Nutrición profunda para piel y almohadillas.',
       benefits: ['Hidratación con manteca de karité y caléndula', 'Hidratación para trufa, almohadillas y callos', 'Sin parabenos ni fragancias sintéticas'],
     },
@@ -406,9 +481,9 @@ export function LunaturalDetail() {
       id: 'crema',
       name: 'Ungüento Cicatrizante',
       badge: 'Cicatrizante',
-      img: '/images/Unguento.png',
-      tagline: 'Alivio natural para irritaciones y alergias.',
-      benefits: ['Fórmula con avena coloidal y aloe vera', 'Calma dermatitis y picaduras', 'Aplicación diaria no grasosa'],
+      img: '/images/Balsamo.png',
+      tagline: 'Protege la herida y acelera cicatrización.',
+      benefits: ['Fórmula con aceites vegetales, aceites esenciales y cera de abejas', 'Protección, nutrición y elasticidad', 'Aplicación diaria no grasosa'],
     },
     {
       id: 'personalizado',
