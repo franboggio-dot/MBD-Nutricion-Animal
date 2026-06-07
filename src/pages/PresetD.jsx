@@ -268,7 +268,7 @@ function Filosofia() {
 
         <div className="filosofia-grid">
           {[
-            { title: 'Nutrición', icon: <HeartPulse size={15} color="#d966a8" strokeWidth={2} />, desc: 'La base de todo. Sin ella, ninguna otra terapia dura.' },
+            { title: 'Nutrición', icon: <HeartPulse size={15} color="#d966a8" strokeWidth={2} />, desc: 'Es el pilar sobre el que se sostiene la salud a largo plazo' },
             { title: 'Fitoterapia y Micoterapia', icon: <Leaf size={15} color="#d966a8" strokeWidth={2} />, desc: 'Plantas medicinales y hongos funcionales para regular el metabolismo, modular el sistema inmune y complementar su nutrición.' },
             { title: 'Fitoaromaterapia', icon: <Droplets size={15} color="#d966a8" strokeWidth={2} />, desc: 'Aceites esenciales y compuestos volátiles con acción terapéutica de grado médico.' },
             { title: 'Flores de Bach', icon: <Flower2 size={15} color="#d966a8" strokeWidth={2} />, desc: 'Equilibrio emocional que impacta la salud física.' }
@@ -302,7 +302,7 @@ function Plans() {
       features: [
         'Evaluación del estado actual',
         'Diseño de dieta personalizada',
-        'Guía de transición paso a paso',
+        'Consulta única, sin seguimiento posterior',
       ],
       btnLabel: 'Agendar consulta',
       highlight: false,
