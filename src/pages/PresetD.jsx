@@ -224,7 +224,7 @@ function SobreMi() {
 
           <div className="sobre-mi-text">
             <p className="sobre-mi-bold">
-              Soy María Belén, médica veterinaria y apasionada por la nutrición animal.
+              Médica veterinaria, diplomada en nutrición animal y comprometida con el bienestar animal
             </p>
             <p className="sobre-mi-body">
               A lo largo de mi camino entendí que la alimentación no solo nutre el cuerpo, sino también la vida que compartimos con nuestros animales.
